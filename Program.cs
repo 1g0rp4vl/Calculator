@@ -8,13 +8,19 @@ class Program {
             if (num_str1 == "q") {
                 break; 
             }
-            double num1 = Convert.ToDouble(num_str1);
+            if (!double.TryParse(num_str1, out double num1)) {
+                Console.WriteLine("Неверный ввод. Пожалуйста, введите число.");
+                continue; 
+            }
             
             Console.WriteLine("Введите операцию (+, -, *, /):");
             string op = Console.ReadLine();
 
             Console.WriteLine("Введите второе число:");
-            double num2 = Convert.ToDouble(Console.ReadLine());
+            if (!double.TryParse(Console.ReadLine(), out double num2)) {
+                Console.WriteLine("Неверный ввод. Пожалуйста, введите число.");
+                continue;
+            }
 
             if (op == "+") {
                 Console.WriteLine($"Результат: {num1 + num2}");
